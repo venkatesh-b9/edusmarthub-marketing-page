@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/edusmarthub-marketing-page/", // GitHub Pages base path
+  base: "/", // GitHub Pages base path (using custom domain)
   server: {
     host: "::",
     port: 8080,
