@@ -35,9 +35,40 @@ const DemoSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
-    alert("Thank you! We'll contact you within 2 hours.");
+    
+    // Format the message with all demo booking details
+    const whatsappMessage = `Hi, I would like to schedule a demo for EduSmartHub.
+
+*School Details:*
+🏫 School Name: ${formData.schoolName}
+👤 Contact Person: ${formData.name}
+📧 Email: ${formData.email}
+📱 Phone: ${formData.phone}
+👥 Number of Students: ${formData.studentCount}
+
+*Features Interested In:*
+${formData.features.length > 0 ? formData.features.map(f => `✓ ${f}`).join('\n') : 'All Features'}
+
+Please schedule a demo at your earliest convenience.`;
+
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Create WhatsApp URL with your number (919676728330)
+    const whatsappUrl = `https://wa.me/919676728330?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab/window
+    window.open(whatsappUrl, '_blank');
+    
+    // Optional: Reset form after submission
+    setFormData({
+      schoolName: "",
+      name: "",
+      email: "",
+      phone: "",
+      studentCount: "",
+      features: [],
+    });
   };
 
   return (

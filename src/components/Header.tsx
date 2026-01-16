@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, GraduationCap } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,14 +34,13 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className={`p-2 rounded-xl transition-colors duration-300 ${isScrolled ? 'bg-primary' : 'bg-primary-foreground/20'}`}>
-              <GraduationCap className={`w-6 h-6 ${isScrolled ? 'text-primary-foreground' : 'text-primary-foreground'}`} />
-            </div>
-            <span className={`font-logo font-bold text-xl transition-colors duration-300 ${isScrolled ? 'text-primary' : 'text-primary-foreground'}`}>
-              EduSmartHub
-              <span className="text-gold">.in</span>
-            </span>
+          <a href="#" className="group">
+            <Logo 
+              size={isScrolled ? "sm" : "md"} 
+              showText={true}
+              textColor={isScrolled ? "#1E3A8A" : "#FFFFFF"}
+              className="transition-all duration-300"
+            />
           </a>
 
           {/* Desktop Navigation */}

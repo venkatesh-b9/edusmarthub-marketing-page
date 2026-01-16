@@ -27,7 +27,7 @@ const ContactSection = () => {
       icon: Phone,
       title: "Call Us",
       subtitle: "Immediate Response",
-      action: "+91 9676728330",
+      action: "+91 96767 28330",
       href: "tel:+919676728330",
       color: "bg-primary",
     },
@@ -75,8 +75,36 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
-    alert("Thank you! We'll respond within 1 hour.");
+    
+    // Format the message with all form details
+    const whatsappMessage = `Hi, I'm interested in EduSmartHub for my school.
+
+*Contact Details:*
+👤 Name: ${formData.name}
+🏫 School: ${formData.school}
+📱 Phone: ${formData.phone}
+
+*Message:*
+${formData.message || 'No additional message provided.'}
+
+Please contact me to schedule a demo.`;
+
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Create WhatsApp URL with your number (919676728330)
+    const whatsappUrl = `https://wa.me/919676728330?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab/window
+    window.open(whatsappUrl, '_blank');
+    
+    // Optional: Reset form after submission
+    setFormData({
+      name: "",
+      school: "",
+      phone: "",
+      message: "",
+    });
   };
 
   return (

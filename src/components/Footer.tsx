@@ -1,4 +1,5 @@
-import { GraduationCap, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import Logo from "./Logo";
 
 const Footer = () => {
   const quickLinks = [
@@ -22,14 +23,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <a href="#" className="flex items-center gap-2 mb-6">
-              <div className="p-2 bg-primary-foreground/20 rounded-xl">
-                <GraduationCap className="w-6 h-6" />
-              </div>
-              <span className="font-logo font-bold text-xl">
-                EduSmartHub
-                <span className="text-gold">.in</span>
-              </span>
+            <a href="#" className="mb-6 inline-block">
+              <Logo size="md" showText={true} className="text-primary-foreground" />
             </a>
             <p className="text-primary-foreground/70 mb-6">
               India's Intelligent Education Hub - Transforming schools with AI-powered management solutions.
