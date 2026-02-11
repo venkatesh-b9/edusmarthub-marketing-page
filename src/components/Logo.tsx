@@ -9,31 +9,31 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ className = "", showText = true, size = "md", textColor }) => {
-  const sizeClasses = {
-    sm: "h-8",
-    md: "h-12",
-    lg: "h-16",
+  const imgSizes = {
+    sm: "h-9 w-9",
+    md: "h-14 w-14",
+    lg: "h-20 w-20",
   };
 
   const textSizes = {
     sm: "text-sm",
-    md: "text-lg",
+    md: "text-xl",
     lg: "text-2xl",
   };
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex items-center gap-2.5 ${className}`}>
       <img
         src={logoImage}
         alt="EduSmartHub Logo"
-        className={`${sizeClasses[size]} w-auto flex-shrink-0`}
+        className={`${imgSizes[size]} object-contain flex-shrink-0 drop-shadow-md`}
       />
       {showText && (
         <span
-          className={`font-logo font-bold ${textSizes[size]} leading-tight`}
+          className={`font-logo font-bold ${textSizes[size]} leading-tight tracking-tight`}
           style={textColor ? { color: textColor } : { color: '#1E3A8A' }}
         >
-          Edu Smart Hub
+          EduSmartHub
         </span>
       )}
     </div>
