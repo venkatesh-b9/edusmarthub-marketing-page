@@ -6,10 +6,10 @@ const PricingSection = () => {
     {
       name: "Basic",
       icon: Zap,
-      price: "₹10,000",
-      period: "/month",
+      price: "₹500",
+      period: "YEAR",
       description: "Perfect for small schools getting started",
-      students: "Up to 500 students",
+      students: "Up to 1000 students",
       features: [
         "Core features",
         "Timetable management",
@@ -23,8 +23,8 @@ const PricingSection = () => {
     {
       name: "Pro",
       icon: Crown,
-      price: "₹25,000",
-      period: "/month",
+      price: "₹800",
+      period: "YEAR",
       description: "Most popular for growing schools",
       students: "Up to 2000 students",
       features: [
@@ -43,8 +43,8 @@ const PricingSection = () => {
     {
       name: "Enterprise",
       icon: Building,
-      price: "Custom",
-      period: "",
+      price: "1200",
+      period: "YEAR",
       description: "For school chains and large institutions",
       students: "Unlimited students",
       features: [
