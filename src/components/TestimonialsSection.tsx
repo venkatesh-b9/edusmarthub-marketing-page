@@ -5,21 +5,21 @@ const TestimonialsSection = () => {
     {
       quote: "I saved 20 hours per week on administration with EduSmartHub. The AI timetable generator alone is worth the investment.",
       author: "Dr. Priya Sharma",
-      role: "Principal, Delhi Public School",
+      role: "Principal, Quantium Public School",
       image: null,
       stats: { metric: "65%", label: "Time Saved" },
     },
     {
       quote: "Parent engagement increased dramatically. We went from 30% to 90% of parents actively using the portal within the first month.",
       author: "Rajesh Kumar",
-      role: "Director, ABC International School",
+      role: "Director, Cambridge International School",
       image: null,
       stats: { metric: "300%", label: "Engagement ↑" },
     },
     {
       quote: "Managing 3 campuses used to be a nightmare. Now I have complete visibility from a single dashboard. Absolutely transformative.",
       author: "Dr. Meera Patel",
-      role: "CEO, XYZ Education Group",
+      role: "CEO, Pallavi International School",
       image: null,
       stats: { metric: "3", label: "Campuses Unified" },
     },
@@ -27,7 +27,7 @@ const TestimonialsSection = () => {
 
   const caseStudies = [
     {
-      school: "ABC International School",
+      school: "Cambridge International School",
       problem: "Managing 2000+ students across 3 campuses",
       solution: "Centralized AI-powered platform",
       results: [
@@ -36,7 +36,7 @@ const TestimonialsSection = () => {
       ],
     },
     {
-      school: "XYZ Public School",
+      school: "Pallavi International School",
       problem: "Low parent engagement, manual fee collection",
       solution: "Parent portal with payment integration",
       results: [
