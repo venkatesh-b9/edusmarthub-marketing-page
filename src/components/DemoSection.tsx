@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Phone, Mail, MessageCircle, Clock, Users } from "lucide-react";
+import { Phone, Mail, MessageCircle, Clock, Users, Sparkles, Shield } from "lucide-react";
 
 const DemoSection = () => {
   const [formData, setFormData] = useState({
@@ -36,7 +36,6 @@ const DemoSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Format the message with all demo booking details
     const whatsappMessage = `Hi, I would like to schedule a demo for EduSmartHub.
 
 *School Details:*
@@ -51,16 +50,10 @@ ${formData.features.length > 0 ? formData.features.map(f => `✓ ${f}`).join('\n
 
 Please schedule a demo at your earliest convenience.`;
 
-    // Encode the message for URL
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    
-    // Create WhatsApp URL with your number (919676728330)
     const whatsappUrl = `https://wa.me/919676728330?text=${encodedMessage}`;
-    
-    // Open WhatsApp in a new tab/window
     window.open(whatsappUrl, '_blank');
     
-    // Optional: Reset form after submission
     setFormData({
       schoolName: "",
       name: "",
@@ -72,12 +65,22 @@ Please schedule a demo at your earliest convenience.`;
   };
 
   return (
-    <section id="demo" className="py-24 gradient-light">
-      <div className="container mx-auto px-4">
+    <section id="demo" className="py-24 gradient-light relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-[150px]" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px]" />
+
+      <div className="container mx-auto px-4 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Form Section */}
-          <div className="bg-card rounded-3xl shadow-xl p-8 md:p-10 border">
+          <div className="bg-card rounded-3xl shadow-xl p-8 md:p-10 border border-border relative overflow-hidden">
+            {/* Top accent */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-gold to-primary" />
+            
             <div className="mb-8">
+              <div className="inline-flex items-center gap-2 bg-gold/10 rounded-full px-3 py-1.5 mb-4">
+                <Sparkles className="w-3.5 h-3.5 text-gold" />
+                <span className="text-xs font-semibold text-gold-foreground">FREE DEMO</span>
+              </div>
               <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-3">
                 See EduSmartHub in Action
               </h2>
@@ -86,7 +89,7 @@ Please schedule a demo at your earliest convenience.`;
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="schoolName">School Name *</Label>
@@ -182,42 +185,53 @@ Please schedule a demo at your earliest convenience.`;
                 </div>
               </div>
 
-              <Button type="submit" variant="gold" size="xl" className="w-full">
+              <Button type="submit" variant="gold" size="xl" className="w-full group">
                 Schedule My Free Demo
+                <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
               </Button>
+
+              <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1"><Shield className="w-3 h-3" /> Secure</span>
+                <span>•</span>
+                <span>No spam, ever</span>
+                <span>•</span>
+                <span>100% Free</span>
+              </div>
             </form>
           </div>
 
           {/* Contact Sidebar */}
-          <div className="space-y-8">
-            <div className="bg-primary rounded-3xl p-8 text-primary-foreground">
-              <h3 className="font-heading font-bold text-2xl mb-6">
+          <div className="space-y-6">
+            <div className="bg-primary rounded-3xl p-8 text-primary-foreground relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-secondary/20 rounded-full blur-3xl" />
+              
+              <h3 className="font-heading font-bold text-2xl mb-6 relative">
                 Get in Touch Directly
               </h3>
               
-              <div className="space-y-4">
+              <div className="space-y-3 relative">
                 <a
                   href="mailto:venkatesh999b9@gmail.com"
-                  className="flex items-center gap-4 bg-primary-foreground/10 rounded-xl p-4 hover:bg-primary-foreground/20 transition-colors"
+                  className="flex items-center gap-4 glass rounded-xl p-4 hover:bg-primary-foreground/15 transition-colors"
                 >
-                  <div className="w-12 h-12 bg-primary-foreground/20 rounded-xl flex items-center justify-center">
-                    <Mail className="w-6 h-6" />
+                  <div className="w-12 h-12 bg-primary-foreground/15 rounded-xl flex items-center justify-center">
+                    <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="font-medium">Email Us</div>
+                    <div className="font-semibold">Email Us</div>
                     <div className="text-sm opacity-80">venkatesh999b9@gmail.com</div>
                   </div>
                 </a>
 
                 <a
                   href="tel:+919676728330"
-                  className="flex items-center gap-4 bg-primary-foreground/10 rounded-xl p-4 hover:bg-primary-foreground/20 transition-colors"
+                  className="flex items-center gap-4 glass rounded-xl p-4 hover:bg-primary-foreground/15 transition-colors"
                 >
-                  <div className="w-12 h-12 bg-primary-foreground/20 rounded-xl flex items-center justify-center">
-                    <Phone className="w-6 h-6" />
+                  <div className="w-12 h-12 bg-primary-foreground/15 rounded-xl flex items-center justify-center">
+                    <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="font-medium">Call Us</div>
+                    <div className="font-semibold">Call Us</div>
                     <div className="text-sm opacity-80">+91 96767 28330</div>
                   </div>
                 </a>
@@ -226,32 +240,32 @@ Please schedule a demo at your earliest convenience.`;
                   href="https://wa.me/919676728330?text=Hi,%20I'm%20interested%20in%20EduSmartHub%20for%20my%20school"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 bg-[#25D366] rounded-xl p-4 hover:bg-[#128C7E] transition-colors"
+                  className="flex items-center gap-4 bg-[#25D366]/90 rounded-xl p-4 hover:bg-[#128C7E] transition-colors"
                 >
                   <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                    <MessageCircle className="w-6 h-6" />
+                    <MessageCircle className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="font-medium">WhatsApp</div>
-                    <div className="text-sm opacity-80">Chat Now - Quick Response</div>
+                    <div className="font-semibold">WhatsApp</div>
+                    <div className="text-sm opacity-80">Chat Now — Quick Response</div>
                   </div>
                 </a>
               </div>
 
-              <div className="flex items-center gap-2 mt-6 text-sm opacity-80">
+              <div className="flex items-center gap-2 mt-6 text-sm opacity-80 relative">
                 <Clock className="w-4 h-4" />
                 Response Time: Within 2 hours during business days
               </div>
             </div>
 
             {/* Social Proof */}
-            <div className="bg-card border rounded-2xl p-6">
+            <div className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg transition-shadow">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gold/15 rounded-xl flex items-center justify-center animate-bounce-gentle">
                   <Users className="w-6 h-6 text-gold" />
                 </div>
                 <div>
-                  <div className="font-heading font-bold text-2xl text-foreground">
+                  <div className="font-heading font-black text-2xl text-foreground">
                     23 Schools
                   </div>
                   <div className="text-muted-foreground text-sm">
@@ -259,6 +273,20 @@ Please schedule a demo at your earliest convenience.`;
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Trust badges */}
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { value: "500+", label: "Schools" },
+                { value: "2L+", label: "Students" },
+                { value: "99.5%", label: "Uptime" },
+              ].map((item, i) => (
+                <div key={i} className="bg-muted/50 border border-border rounded-xl p-4 text-center">
+                  <div className="font-heading font-bold text-lg text-foreground">{item.value}</div>
+                  <div className="text-muted-foreground text-xs">{item.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
