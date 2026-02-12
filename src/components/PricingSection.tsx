@@ -1,4 +1,4 @@
-import { Check, Zap, Crown, Building } from "lucide-react";
+import { Check, Zap, Crown, Building, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const PricingSection = () => {
@@ -43,7 +43,7 @@ const PricingSection = () => {
     {
       name: "Enterprise",
       icon: Building,
-      price: "1200",
+      price: "₹1200",
       period: "/YEAR",
       description: "For school chains and large institutions",
       students: "Unlimited students",
@@ -69,10 +69,16 @@ const PricingSection = () => {
   ];
 
   return (
-    <section id="pricing" className="py-24 gradient-light">
-      <div className="container mx-auto px-4">
+    <section id="pricing" className="py-24 gradient-light relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/3 rounded-full blur-[200px]" />
+      
+      <div className="container mx-auto px-4 relative">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 mb-6">
+            <Crown className="w-4 h-4" />
+            <span className="text-sm font-semibold">Simple Pricing</span>
+          </div>
           <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
             Simple, <span className="text-gradient">Transparent</span> Pricing
           </h2>
@@ -82,19 +88,19 @@ const PricingSection = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-6 mb-12 items-start">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative bg-card rounded-3xl p-8 border-2 transition-all duration-300 hover:shadow-xl ${
+              className={`relative bg-card rounded-3xl p-8 border-2 transition-all duration-500 hover-lift ${
                 plan.popular
-                  ? "border-gold shadow-gold scale-105 z-10"
+                  ? "border-gold shadow-glow md:scale-105 z-10"
                   : "border-border hover:border-primary/30"
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-gold text-gold-foreground text-sm font-bold px-4 py-1.5 rounded-full whitespace-nowrap">
+                  <span className="bg-gradient-to-r from-gold to-amber-400 text-gold-foreground text-sm font-bold px-5 py-1.5 rounded-full whitespace-nowrap shadow-gold">
                     🏆 MOST POPULAR
                   </span>
                 </div>
@@ -112,19 +118,26 @@ const PricingSection = () => {
               </div>
 
               <div className="mb-4">
-                <span className="font-heading font-bold text-4xl text-foreground">
+                <span className="font-heading font-black text-5xl text-foreground">
                   {plan.price}
                 </span>
-                <span className="text-muted-foreground">{plan.period}</span>
+                <span className="text-muted-foreground text-lg">{plan.period}</span>
               </div>
 
               <p className="text-muted-foreground mb-2">{plan.description}</p>
-              <p className="text-primary font-medium text-sm mb-6">{plan.students}</p>
+              <p className="text-primary font-semibold text-sm mb-6 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full" />
+                {plan.students}
+              </p>
 
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <Check className={`w-5 h-5 flex-shrink-0 ${plan.popular ? 'text-gold' : 'text-primary'}`} />
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
+                      plan.popular ? 'bg-gold/20' : 'bg-primary/10'
+                    }`}>
+                      <Check className={`w-3 h-3 ${plan.popular ? 'text-gold' : 'text-primary'}`} />
+                    </div>
                     <span className="text-foreground text-sm">{feature}</span>
                   </li>
                 ))}
@@ -133,21 +146,24 @@ const PricingSection = () => {
               <Button
                 variant={plan.popular ? "gold" : "outline"}
                 size="lg"
-                className="w-full"
+                className="w-full group"
                 asChild
               >
-                <a href="#demo">{plan.cta}</a>
+                <a href="#demo" className="flex items-center gap-2">
+                  {plan.cta}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
             </div>
           ))}
         </div>
 
         {/* Guarantees */}
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-4">
           {guarantees.map((guarantee, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 bg-card px-4 py-2 rounded-full border"
+              className="flex items-center gap-2 bg-card px-5 py-2.5 rounded-full border border-border shadow-sm"
             >
               <Check className="w-4 h-4 text-primary" />
               <span className="text-foreground text-sm font-medium">{guarantee}</span>

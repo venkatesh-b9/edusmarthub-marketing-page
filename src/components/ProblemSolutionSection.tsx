@@ -1,4 +1,4 @@
-import { X, Check, ArrowRight } from "lucide-react";
+import { X, Check, ArrowRight, TrendingUp } from "lucide-react";
 
 const ProblemSolutionSection = () => {
   const comparisons = [
@@ -25,16 +25,24 @@ const ProblemSolutionSection = () => {
   ];
 
   const metrics = [
-    { before: "50 hrs/month on admin", after: "15 hrs/month on admin", improvement: "70% less" },
-    { before: "30% parent engagement", after: "85% parent engagement", improvement: "185% increase" },
-    { before: "Manual error rate 15%", after: "AI accuracy 99.5%", improvement: "Near perfect" },
+    { before: "50 hrs/month on admin", after: "15 hrs/month on admin", improvement: "70% less", color: "from-primary to-secondary" },
+    { before: "30% parent engagement", after: "85% parent engagement", improvement: "185% increase", color: "from-gold to-amber-400" },
+    { before: "Manual error rate 15%", after: "AI accuracy 99.5%", improvement: "Near perfect", color: "from-emerald-500 to-teal-500" },
   ];
 
   return (
-    <section id="ai-capabilities" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="ai-capabilities" className="py-24 bg-background relative">
+      {/* Subtle background decoration */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/3 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/3 rounded-full blur-[120px]" />
+
+      <div className="container mx-auto px-4 relative">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 bg-gold/10 text-gold-foreground rounded-full px-4 py-2 mb-6">
+            <TrendingUp className="w-4 h-4 text-gold" />
+            <span className="text-sm font-semibold">Proven Results</span>
+          </div>
           <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
             For <span className="text-gradient">School Principals</span> Who Want More
           </h2>
@@ -44,22 +52,23 @@ const ProblemSolutionSection = () => {
         </div>
 
         {/* Problem vs Solution */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-20">
+        <div className="grid lg:grid-cols-2 gap-6 mb-20">
           {/* Problems */}
-          <div className="bg-destructive/5 border border-destructive/20 rounded-3xl p-8">
-            <h3 className="font-heading font-bold text-xl text-destructive mb-6 flex items-center gap-2">
-              <div className="w-8 h-8 bg-destructive/20 rounded-full flex items-center justify-center">
-                <X className="w-4 h-4" />
+          <div className="bg-destructive/5 border border-destructive/15 rounded-3xl p-8 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-destructive/5 rounded-full blur-3xl" />
+            <h3 className="font-heading font-bold text-xl text-destructive mb-6 flex items-center gap-3 relative">
+              <div className="w-10 h-10 bg-destructive/15 rounded-xl flex items-center justify-center">
+                <X className="w-5 h-5" />
               </div>
-              Problems You Face Daily
+              Without EduSmartHub
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 relative">
               {comparisons.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 bg-background rounded-xl p-4"
+                  className="flex items-start gap-3 bg-background/80 rounded-xl p-4 border border-destructive/10 hover:border-destructive/20 transition-colors"
                 >
-                  <div className="w-6 h-6 bg-destructive/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-6 h-6 bg-destructive/15 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <X className="w-3 h-3 text-destructive" />
                   </div>
                   <span className="text-foreground">{item.problem}</span>
@@ -69,23 +78,24 @@ const ProblemSolutionSection = () => {
           </div>
 
           {/* Solutions */}
-          <div className="bg-primary/5 border border-primary/20 rounded-3xl p-8">
-            <h3 className="font-heading font-bold text-xl text-primary mb-6 flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
-                <Check className="w-4 h-4" />
+          <div className="bg-primary/5 border border-primary/15 rounded-3xl p-8 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl" />
+            <h3 className="font-heading font-bold text-xl text-primary mb-6 flex items-center gap-3 relative">
+              <div className="w-10 h-10 bg-primary/15 rounded-xl flex items-center justify-center">
+                <Check className="w-5 h-5" />
               </div>
-              Our AI-Powered Solutions
+              With EduSmartHub
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 relative">
               {comparisons.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 bg-background rounded-xl p-4"
+                  className="flex items-start gap-3 bg-background/80 rounded-xl p-4 border border-primary/10 hover:border-primary/20 transition-colors"
                 >
-                  <div className="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-6 h-6 bg-primary/15 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Check className="w-3 h-3 text-primary" />
                   </div>
-                  <span className="text-foreground">{item.solution}</span>
+                  <span className="text-foreground font-medium">{item.solution}</span>
                 </div>
               ))}
             </div>
@@ -93,25 +103,28 @@ const ProblemSolutionSection = () => {
         </div>
 
         {/* Before/After Metrics */}
-        <div className="bg-muted rounded-3xl p-8 md:p-12">
-          <h3 className="font-heading font-bold text-2xl text-center text-foreground mb-10">
+        <div className="bg-muted/50 border border-border rounded-3xl p-8 md:p-12">
+          <h3 className="font-heading font-bold text-2xl text-center text-foreground mb-3">
             Real Results from Real Schools
           </h3>
-          <div className="grid md:grid-cols-3 gap-8">
+          <p className="text-muted-foreground text-center mb-10">Measured outcomes after 3 months of using EduSmartHub</p>
+          <div className="grid md:grid-cols-3 gap-6">
             {metrics.map((metric, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-background rounded-2xl p-6 mb-4 relative overflow-hidden group hover:shadow-lg transition-shadow">
-                  <div className="text-destructive/60 line-through text-sm mb-2">
-                    Before: {metric.before}
+              <div key={index} className="text-center group">
+                <div className="bg-card rounded-2xl p-6 mb-4 border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <div className="text-destructive/50 line-through text-sm mb-3">
+                    {metric.before}
                   </div>
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <ArrowRight className="w-4 h-4 text-gold animate-pulse" />
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <div className="w-8 h-[2px] bg-gold" />
+                    <ArrowRight className="w-4 h-4 text-gold" />
+                    <div className="w-8 h-[2px] bg-gold" />
                   </div>
                   <div className="text-primary font-bold text-lg">
-                    After: {metric.after}
+                    {metric.after}
                   </div>
                 </div>
-                <span className="inline-block bg-gold/20 text-gold-foreground px-4 py-2 rounded-full text-sm font-bold">
+                <span className={`inline-block bg-gradient-to-r ${metric.color} text-white px-5 py-2 rounded-full text-sm font-bold shadow-md`}>
                   {metric.improvement}
                 </span>
               </div>
