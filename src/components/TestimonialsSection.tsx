@@ -27,7 +27,7 @@ const TestimonialsSection = () => {
 
   const caseStudies = [
     {
-      school: "Cambridge International School",
+      school: "Quantium Public School",
       problem: "Managing 2000+ students across 3 campuses",
       solution: "Centralized AI-powered platform",
       results: [
@@ -36,7 +36,7 @@ const TestimonialsSection = () => {
       ],
     },
     {
-      school: "Pallavi International School",
+      school: "Cambridge International School",
       problem: "Low parent engagement, manual fee collection",
       solution: "Parent portal with payment integration",
       results: [
