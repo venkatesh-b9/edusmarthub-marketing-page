@@ -1,0 +1,9 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: edusmarthub-frontend
+    ports:
+      - "8000:80"
+    restart: unless-stopped
